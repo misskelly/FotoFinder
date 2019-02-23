@@ -10,12 +10,14 @@
 html {
   font-family: helvetica;
   font-size: 18;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  height: 100%;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
   min-height: 100%;
   width: 100%;
   background-color: #f6f9fc;
@@ -32,12 +34,92 @@ a {
   text-decoration: none;
 }
 
-.hidden {
+/*margin: 0*/
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding:0;
+}
+
+legend {
   display: none;
 }
 
-/*margin: 0*/
+input,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  cursor: pointer; 
+  padding: 0;
+}
 
 /*/////HEADER/////*/
+
+header {
+  background-color: #3E2A34;
+  color: #FFFFFF;
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  min-width: 320px;
+  padding: 25px;
+  width: 100%;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 40px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.logo {
+  height: 45px;
+}
+
+/*search*/
+
+.search {
+  width: 37%
+}
+
+.search-input {
+  border-radius: 5px 0 0 5px;
+  border: 2px solid #C1B2B4;
+  font-size: 18px;
+/*  height: 40px;
+*/  padding: 8px;
+/*  position: relative;
+*/  width: 75%;
+  z-index: 1;
+}
+
+.search-btn {
+  align-items: center;
+  background-color: #C1B2B4;
+  border-bottom: 3px solid #C1B2B4;
+  border-radius: 0 5px 5px 0;
+  color: #FFFFFF;
+  margin: 0 0 0 -8px;
+  width: 15%;
+}
+
+.mag {
+  font-size: 23px;
+  padding: 7px 0;
+}
+
 /*/////MAIN/////*/
+main {
+  width: 100%;
+}
+
+/*form*/
+.form-section {
+  background-color: #3E2A34;
+
+}
 /*/////FOOTER/////*/
