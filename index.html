@@ -34,25 +34,25 @@
   <main>
     <section class="form-section">
       <form class="new-foto-info">
-        <fieldset>
+        <fieldset class="input-container">
           <legend>
             New Foto Info:
           </legend>
           <h2 class="label">
             Title
           </h2>
-          <input type="text" maxlength="100" class="title-input"/>
+          <input type="text" maxlength="100" class="title-input new-foto-input"/>
           <h3 class="label">
             Caption
           </h3>
-          <input type="text" class="cap-input" maxlength="250"/>
+          <input type="text" class="cap-input new-foto-input" maxlength="250"/>
         </fieldset>
         <fieldset class="btn-container">
-          <label for="file" class="form-btn choose">
+          <label for="file" class="form-btn choose-file-alias" aria-role="button">
             Choose File
           </label>
-          <input type="file" id="file" class="add-file"/>
-          <div class="btn-container">
+          <input type="file" id="file" class="add-file form-btn"/>
+          <div class="btn-container-div">
             <button class="form-btn view-favs-btn">
               View <span id="fav-count">#</span> Favorites
             </button>
@@ -64,25 +64,25 @@
       </form>
     </section>
     <section class="gallery">
-      <!-- <article class="demo-foto card">
+      <article class="demo-foto card">
         <h4 class="card-title">
           DEMO
         </h4>
         <div class="image-container">
-          <img class="foto" src="resources/images/emotion.jpg">
+          <img class="foto" src="assets/unicorn-folder/unicorn10.jpeg">
         </div>
-        <p class="caption">Lorem ipsum dolor sit amet</p>
+        <p class="card-caption">Lorem ipsum dolor sit amet</p>
         <form class="card-buttons">
           <button class="trash card-btn">
             <img src="assets/images/delete.svg" class="trash-icon card-svg">
-            <img src="assets/images/delete-active.svg" class="trash-icon card-svg card-button-active">
+            <img src="assets/images/delete-active.svg" class="trash-icon card-svg card-btn-active">
           </button>
-          <button class="heart card-btn">
+          <button class="heart-btn card-btn">
             <img src="assets/images/favorite.svg" class="heart-icon card-svg">
-            <img src="assets/images/favorite-active.svg" class="heart-icon card-svg card-button-active">
+            <img src="assets/images/favorite-active.svg" class="heart-icon card-svg card-btn-active">
           </button>
         </form>
-       -->
+      
      <!-- </article> -->
     </section>
   </main>
