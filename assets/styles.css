@@ -21,6 +21,8 @@ body {
   min-height: 100%;
   width: 100%;
   background-color: #f6f9fc;
+  color: #FFFFFF;
+
 }
 
 ul,
@@ -38,7 +40,7 @@ a {
 
 fieldset {
   border: none;
-  margin: 0;
+  margin: 0 auto;
   padding:0;
 }
 
@@ -115,11 +117,146 @@ h1 {
 /*/////MAIN/////*/
 main {
   width: 100%;
+
 }
+
 
 /*form*/
+
 .form-section {
   background-color: #3E2A34;
-
+  padding-bottom: 35px;
 }
+
+.new-foto-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-container,
+.btn-container {
+  display: flex;
+  width: 50%;
+}
+
+.label {
+  color: #C1B2B4;
+  font-size: inherit;
+  font-weight: normal;
+  margin: 10px 0;
+}
+
+.form-btn {
+  background-color: #5B4447;
+  color: inherit;
+  margin-top: 35px;
+  padding: 15px;
+}
+.new-foto-input {
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.view-favs-btn,
+.add-btn {
+  width: 45%;
+}
+.btn-container-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.choose-file-alias {
+  text-align: center;
+}
+.add-file {
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0.1px;
+  z-index: -1;
+}
+
+/*/////CARD/////*/
+
+h5 {
+  color: #5B4447;
+}
+
+.gallery {
+  align-content: space-around;
+  background-color: #C1B2B4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 30px;
+  width: 100%;
+  min-height: 50vh;
+}
+
+.card {
+  background-color: #FFFFFF;
+  color: black;
+  border: 2px solid black;
+  height: 350px;
+  margin: 15px;
+  min-width: 200px;
+  position: relative;
+  width: 23%;
+}
+
+.foto {
+  max-height: 150px;
+  object-fit: cover; 
+  width: 100%;
+}
+
+.card-title,
+.card-caption {
+  margin-left: 10px;
+}
+
+.card-buttons {
+  background-color: #5B4447;
+  bottom: 0;
+  padding: 10px;
+  position: absolute;
+  width: 100%;
+}
+
+.card-btn {
+  background-color: #5B4447;
+  color: #938284;
+  height: 30px;
+  width: 30px;
+  /*padding: 15px;*/
+}
+
+.card-btn-active {
+  display: none;
+}
+
+.card-svg {
+  height: 100%;
+  width: 100%;
+}
+
+.trash-active {
+  display: none;
+}
+
+.heart-btn {
+  float: right;
+}
+
 /*/////FOOTER/////*/
+
+footer{
+  display: none;
+}
+
+
