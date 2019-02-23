@@ -195,6 +195,7 @@ h5 {
   justify-content: space-around;
   padding: 30px;
   width: 100%;
+  min-height: 50vh;
 }
 
 .card {
