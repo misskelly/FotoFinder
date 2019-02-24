@@ -13,7 +13,7 @@ window.addEventListener('load', pageLoad);
 // searchInput.addEventListener('input', search);
 addFotoBtn.addEventListener('click', addNewFoto);
 // gallery.addEventListener('dblclick', editText);
-// gallery.addEventListener('click', identifyEventTarget);
+gallery.addEventListener('click', identifyEventTarget);
 // showMoreBtn.addEventListener('click', moreLess);
 
 
@@ -70,7 +70,7 @@ function saveFoto(e) {
 
 function appendFoto(foto) {
   gallery.insertAdjacentHTML('afterbegin',
-    `<article data-id=${foto.id} class="card">
+    `<article data-id=${foto.id} class="foto-card">
         <h4 class="card-title">
           ${foto.title}
         </h4>
@@ -91,4 +91,16 @@ function appendFoto(foto) {
           </button>
         </form>
       </article>`);
+}
+
+function identifyEventTarget(e) {
+  e.preventDefault();
+  const targetCard = e.target.closest('.foto-card');
+  const cardId = parseInt(targetCard.dataset.id);
+  const targetFoto = fotoArr.find(foto => foto.id === cardId);
+  const index = fotoArr.indexOf(targetFoto);
+  if (e.target.matches('.trash-icon')) {
+    targetCard.remove();
+    targetFoto.deleteFromStorage(index);
+  }
 }
