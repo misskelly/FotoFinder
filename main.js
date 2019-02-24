@@ -12,7 +12,6 @@ const reader = new FileReader();
 window.addEventListener('load', pageLoad);
 // searchInput.addEventListener('input', search);
 addFotoBtn.addEventListener('click', addNewFoto);
-// gallery.addEventListener('dblclick', editText);
 gallery.addEventListener('click', identifyEventTarget);
 // showMoreBtn.addEventListener('click', moreLess);
 
@@ -27,8 +26,6 @@ function pageLoad() {
       });
     console.log(fotoArr)
   }
-  // appendFotos();
-
 }
 
 // function appendFotos() {
@@ -71,13 +68,13 @@ function saveFoto(e) {
 function appendFoto(foto) {
   gallery.insertAdjacentHTML('afterbegin',
     `<article data-id=${foto.id} class="foto-card">
-        <h4 class="card-title">
+        <h4 class="card-title card-text" contenteditable="true">
           ${foto.title}
         </h4>
         <div class="card-img-container">
           <img class="foto-img" src="${foto.file}">
         </div>
-        <p class="card-caption">
+        <p class="card-caption card-text" contenteditable="true">
           ${foto.caption}
         </p>
         <form class="card-buttons">
@@ -102,5 +99,15 @@ function identifyEventTarget(e) {
   if (e.target.matches('.trash-icon-active')) {
     targetCard.remove();
     targetFoto.deleteFromStorage(index);
+  } else if (e.target.matches('.card-text')) {
+    editCardText(e, targetFoto)
+    // targetFoto.updateContent(e);
   }
 }
+
+function editCardText(e, foto) {
+    e.target.addEventListener('input', () => {
+      foto.updateContent(e, e.target.innerText);
+    });
+}
+

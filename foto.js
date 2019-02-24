@@ -17,4 +17,13 @@ class Foto {
     this.saveToStorage(fotoArr);
   }
 
+  updateContent(e, newText) {
+    if (e.target.matches('.card-title')) {
+      this.title = newText;
+    } else if (e.target.matches('.card-caption')){
+      this.caption = newText;
+    }
+    this.saveToStorage(fotoArr);
+  }
+
 }

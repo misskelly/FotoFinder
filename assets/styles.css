@@ -212,6 +212,7 @@ h5 {
 .card-title,
 .card-caption {
   margin-left: 1rem;
+  outline: none;
 }
 
 .card-buttons {
