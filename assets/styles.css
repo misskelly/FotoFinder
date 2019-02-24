@@ -188,12 +188,11 @@ h5 {
 }
 
 .gallery {
-  align-content: space-around;
   background-color: #C1B2B4;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 30px;
+  justify-content: flex-start;
+  padding: 40px;
   width: 100%;
   min-height: 50vh;
 }
@@ -203,29 +202,24 @@ h5 {
   color: black;
   border: 2px solid black;
   height: 350px;
-  margin: 15px;
+  margin: 2%;
   min-width: 200px;
-  position: relative;
-  width: 23%;
+  width: 20%;
 }
 
-.foto {
-  max-height: 150px;
+.foto-img {
+  max-height: 180px;
   object-fit: cover; 
   width: 100%;
 }
 
 .card-title,
 .card-caption {
-  margin-left: 10px;
+  margin-left: 1rem;
 }
 
 .card-buttons {
   background-color: #5B4447;
-  bottom: 0;
-  padding: 10px;
-  position: absolute;
-  width: 100%;
 }
 
 .card-btn {
@@ -233,7 +227,7 @@ h5 {
   color: #938284;
   height: 30px;
   width: 30px;
-  /*padding: 15px;*/
+  margin: 12px;
 }
 
 .card-btn-active {
@@ -243,10 +237,6 @@ h5 {
 .card-svg {
   height: 100%;
   width: 100%;
-}
-
-.trash-active {
-  display: none;
 }
 
 .heart-btn {

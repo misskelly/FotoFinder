@@ -5,7 +5,7 @@ const fileInput = document.querySelector('.add-file');
 const addFotoBtn = document.querySelector('.add-btn');
 const showMoreBtn = document.querySelector('.show-more');
 const gallery = document.querySelector('.gallery');
-const fotoArr = JSON.parse(localStorage.getItem("storedFotos")) || [];
+const fotoArr = [];
 const reader = new FileReader();
 
 
@@ -21,33 +21,33 @@ function pageLoad() {
   if (localStorage.hasOwnProperty("storedFotos")) {
     const parsedArray = JSON.parse(localStorage.getItem("storedFotos"));
     parsedArray.forEach(foto => {
-      const oldFoto = new Foto(foto.id, foto.title, foto.caption, foto.file);
-      fotoArray.push(oldfoto);
+      const oldFoto = new Foto(foto.id, foto.title, foto.caption, foto.file, foto.fav);
+      fotoArr.push(oldFoto);
+      appendFoto(oldFoto);
       });
-    console.log(fotoArray)
+    console.log(fotoArr)
   }
-  fotoArr.forEach(foto => )
-  appendFotos();
-  // instFoto();
+  // appendFotos();
+
 }
 
-function appendFotos() {
-  var footer = document.querySelector('.more-less');
-  if (fotoArr.length === 0) {
-    gallery.insertAdjacentHTML('afterbegin',
-      `<article>
-          <h5>Add photos to your gallery!
-          </h5>
-      </article>`);
-    showMoreBtn.style.display = "none";
-  } else if (fotoArr.length <= 10) {
-    showAll();
-    showMoreBtn.style.display = "none";
-  } else if (fotoArr.length >= 11) {
-    showTen();
-    showMoreBtn.disabled = false;
-  }
-}
+// function appendFotos() {
+//   var footer = document.querySelector('.more-less');
+//   if (fotoArr.length === 0) {
+//     gallery.insertAdjacentHTML('afterbegin',
+//       `<article>
+//           <h5>Add photos to your gallery!
+//           </h5>
+//       </article>`);
+//     showMoreBtn.style.display = "none";
+//   } else if (fotoArr.length <= 10) {
+//     showAll();
+//     showMoreBtn.style.display = "none";
+//   } else if (fotoArr.length >= 11) {
+//     showTen();
+//     showMoreBtn.disabled = false;
+//   }
+// }
 
 function addNewFoto(e) {
   e.preventDefault();
@@ -59,12 +59,13 @@ function addNewFoto(e) {
 }
 
 function saveFoto(e) {
-  debugger
   e.preventDefault;
   let newFoto = new Foto(Date.now(), titleInput.value, captionInput.value, e.target.result);
   fotoArr.push(newFoto);
   newFoto.saveToStorage();
   appendFoto(newFoto);
+  titleInput.innerText = '';
+  captionInput.innerText = '';
 }
 
 function appendFoto(foto) {
