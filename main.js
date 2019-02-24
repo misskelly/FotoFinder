@@ -64,8 +64,8 @@ function saveFoto(e) {
   fotoArr.push(newFoto);
   newFoto.saveToStorage();
   appendFoto(newFoto);
-  titleInput.innerText = '';
-  captionInput.innerText = '';
+  titleInput.value = '';
+  captionInput.value = '';
 }
 
 function appendFoto(foto) {
@@ -83,7 +83,7 @@ function appendFoto(foto) {
         <form class="card-buttons">
           <button class="trash card-btn">
             <img src="assets/images/delete.svg" class="trash-icon card-svg">
-            <img src="assets/images/delete-active.svg" class="trash-icon card-svg card-btn-active">
+            <img src="assets/images/delete-active.svg" class="trash-icon-active card-svg card-btn-active">
           </button>
           <button class="heart-btn card-btn">
             <img src="assets/images/favorite.svg" class="heart-icon card-svg">
@@ -99,7 +99,7 @@ function identifyEventTarget(e) {
   const cardId = parseInt(targetCard.dataset.id);
   const targetFoto = fotoArr.find(foto => foto.id === cardId);
   const index = fotoArr.indexOf(targetFoto);
-  if (e.target.matches('.trash-icon')) {
+  if (e.target.matches('.trash-icon-active')) {
     targetCard.remove();
     targetFoto.deleteFromStorage(index);
   }
