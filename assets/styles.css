@@ -249,6 +249,14 @@ h5 {
   float: right;
 }
 
+.unfav {
+  display: none;
+}
+
+.favorite {
+  display: block;
+}
+
 /*/////FOOTER/////*/
 
 .footer {

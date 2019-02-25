@@ -75,7 +75,7 @@ function appendFoto(foto) {
           </button>
           <button class="heart-btn card-btn">
             <img src="assets/images/favorite.svg" class="heart-icon card-svg">
-            <img src="assets/images/favorite-active.svg" class="heart-icon card-svg card-btn-active">
+            <img src="assets/images/favorite-active.svg" class="heart-icon-active card-svg card-btn-active" id="favorite"> 
           </button>
         </form>
       </article>`);
@@ -87,6 +87,7 @@ function findFoto(e) {
   return targetFoto;
 }
 
+
 function cardButton(e) {
   e.preventDefault();
   const targetCard = e.target.closest('.foto-card');
@@ -95,12 +96,20 @@ function cardButton(e) {
   if (e.target.matches('.trash-icon-active')) {
     targetCard.remove();
     targetFoto.deleteFromStorage(index);
-  } 
+  } else if (e.target.matches('.heart-icon-active')) {
+    favFoto(e, targetCard, targetFoto);
+  }
+}
+
+function favFoto(e, card, foto) {
+  e.target.classList.toggle('favorite')
+  e.target.previousElementSibling.classList.toggle('unfav');
+  foto.updateFoto(e)
 }
 
 function editCard(e) {
   const targetFoto = findFoto(e);
   console.log(targetFoto)
-  targetFoto.updateContent(e, e.target.innerText);
+  targetFoto.updateFoto(e, e.target.innerText);
 }
 
