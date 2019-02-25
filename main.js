@@ -10,7 +10,7 @@ const reader = new FileReader();
 
 
 window.addEventListener('load', pageLoad);
-// searchInput.addEventListener('input', search);
+searchInput.addEventListener('input', search);
 addFotoBtn.addEventListener('click', addNewFoto);
 gallery.addEventListener('click', identifyEventTarget);
 // showMoreBtn.addEventListener('click', moreLess);
@@ -28,23 +28,14 @@ function pageLoad() {
   }
 }
 
-// function appendFotos() {
-//   var footer = document.querySelector('.more-less');
-//   if (fotoArr.length === 0) {
-//     gallery.insertAdjacentHTML('afterbegin',
-//       `<article>
-//           <h5>Add photos to your gallery!
-//           </h5>
-//       </article>`);
-//     showMoreBtn.style.display = "none";
-//   } else if (fotoArr.length <= 10) {
-//     showAll();
-//     showMoreBtn.style.display = "none";
-//   } else if (fotoArr.length >= 11) {
-//     showTen();
-//     showMoreBtn.disabled = false;
-//   }
-// }
+function search() {
+  gallery.innerHTML = '';
+  const query = searchInput.value;
+  let filteredCards = fotoArr.filter(foto => {
+    return foto.title.toLowerCase().includes(query) || foto.caption.toLowerCase().includes(query);
+  });
+  filteredCards.forEach(foto => appendFoto(foto));
+}
 
 function addNewFoto(e) {
   e.preventDefault();
