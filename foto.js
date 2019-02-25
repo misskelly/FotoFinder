@@ -17,13 +17,23 @@ class Foto {
     this.saveToStorage(fotoArr);
   }
 
-  updateContent(e, newText) {
+  updateFoto(e, newText) {
     if (e.target.matches('.card-title')) {
       this.title = newText;
     } else if (e.target.matches('.card-caption')){
       this.caption = newText;
+    } else if (e.target.matches('#favorite')) {
+      this.updateFav();
     }
     this.saveToStorage(fotoArr);
   }
+
+  updateFav() {
+    this.fav = !this.fav;
+    console.log(this)
+    console.log(fotoArr)
+    this.saveToStorage(fotoArr); 
+  }
+
 
 }
