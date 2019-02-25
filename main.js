@@ -3,19 +3,23 @@ const titleInput = document.querySelector('.title-input');
 const captionInput = document.querySelector('.cap-input');
 const fileInput = document.querySelector('.add-file');
 const addFotoBtn = document.querySelector('.add-btn');
+const viewFavsBtn = document.querySelector('.view-favs-btn');
 const showMoreBtn = document.querySelector('.show-more');
 const gallery = document.querySelector('.gallery');
+let fav;
+let unfav;
 const fotoArr = [];
+const favorites = [];
 const reader = new FileReader();
 
 
 window.addEventListener('load', pageLoad);
 searchInput.addEventListener('input', search);
 addFotoBtn.addEventListener('click', addNewFoto);
+viewFavsBtn.addEventListener('click', viewFavs)
 gallery.addEventListener('click', cardButton);
 gallery.addEventListener('input', editCard)
 // showMoreBtn.addEventListener('click', moreLess);
-
 
 function pageLoad() {
   if (localStorage.hasOwnProperty("storedFotos")) {
@@ -23,9 +27,8 @@ function pageLoad() {
     parsedArray.forEach(foto => {
       const oldFoto = new Foto(foto.id, foto.title, foto.caption, foto.file, foto.fav);
       fotoArr.push(oldFoto);
-      appendFoto(oldFoto);
-      });
-    console.log(fotoArr)
+      checkFav(oldFoto);
+    });
   }
 }
 
@@ -38,8 +41,9 @@ function search() {
   filteredCards.forEach(foto => appendFoto(foto));
 }
 
+
 function addNewFoto(e) {
-  e.preventDefault();  // console.log(fileInput.files[0])
+  e.preventDefault();
   if (fileInput.files[0]) {
     reader.readAsDataURL(fileInput.files[0]);
     reader.onload = saveFoto;
@@ -47,7 +51,7 @@ function addNewFoto(e) {
 }
 
 function saveFoto(e) {
-  e.preventDefault;
+  e.preventDefault();
   let newFoto = new Foto(Date.now(), titleInput.value, captionInput.value, e.target.result);
   fotoArr.push(newFoto);
   newFoto.saveToStorage();
@@ -56,7 +60,18 @@ function saveFoto(e) {
   captionInput.value = '';
 }
 
-function appendFoto(foto) {
+function checkFav(foto) {
+  const favCount = document.querySelector('#fav-count');
+  if (foto.fav === true) {
+    favorites.push(foto);
+    favCount.innerText = favorites.length;
+    appendFoto(foto, 'favorite', 'unfav');
+  } else {
+    appendFoto(foto)
+  }
+}
+
+function appendFoto(foto, fav, unfav) {
   gallery.insertAdjacentHTML('afterbegin',
     `<article data-id=${foto.id} class="foto-card">
         <h4 class="card-title card-text" contenteditable="true">
@@ -74,19 +89,29 @@ function appendFoto(foto) {
             <img src="assets/images/delete-active.svg" class="trash-icon-active card-svg card-btn-active">
           </button>
           <button class="heart-btn card-btn">
-            <img src="assets/images/favorite.svg" class="heart-icon card-svg">
-            <img src="assets/images/favorite-active.svg" class="heart-icon-active card-svg card-btn-active" id="favorite"> 
+            <img src="assets/images/favorite.svg" class="heart-icon card-svg ${unfav}">
+            <img src="assets/images/favorite-active.svg" class="heart-icon-active card-svg card-btn-active ${fav}" id="favorite"> 
           </button>
         </form>
       </article>`);
 }
+
+function viewFavs(e) {
+  e.preventDefault();
+  gallery.innerHTML = '';
+  favorites.forEach(foto => {
+      appendFoto(foto, 'favorite', 'unfav');
+  });
+  vavCount.innerText = favorites.length;
+}
+
+
 
 function findFoto(e) {
   const targetCardId = e.target.closest('.foto-card').dataset.id;
   const targetFoto = fotoArr.find(foto => foto.id == targetCardId);
   return targetFoto;
 }
-
 
 function cardButton(e) {
   e.preventDefault();
@@ -97,14 +122,14 @@ function cardButton(e) {
     targetCard.remove();
     targetFoto.deleteFromStorage(index);
   } else if (e.target.matches('.heart-icon-active')) {
-    favFoto(e, targetCard, targetFoto);
+    favToggle(e, targetCard, targetFoto);
   }
 }
 
-function favFoto(e, card, foto) {
+function favToggle(e, card, foto) {
   e.target.classList.toggle('favorite')
   e.target.previousElementSibling.classList.toggle('unfav');
-  foto.updateFoto(e)
+  foto.updateFoto(e);
 }
 
 function editCard(e) {

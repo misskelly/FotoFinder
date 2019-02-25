@@ -4,7 +4,7 @@ class Foto {
     this.title = title;
     this.caption = caption;
     this.file = file;
-    this.fav = this.fav || false;
+    this.fav = fav || false;
   }
 
   saveToStorage() {
@@ -23,17 +23,17 @@ class Foto {
     } else if (e.target.matches('.card-caption')){
       this.caption = newText;
     } else if (e.target.matches('#favorite')) {
-      this.updateFav();
+      this.fav = !this.fav;
     }
     this.saveToStorage(fotoArr);
   }
 
-  updateFav() {
-    this.fav = !this.fav;
-    console.log(this)
-    console.log(fotoArr)
-    this.saveToStorage(fotoArr); 
-  }
+  // updateFav() {
+  //   this.fav = !this.fav;
+  //   console.log(this)
+  //   console.log(fotoArr)
+  //   // this.saveToStorage(fotoArr); 
+  // }
 
 
 }
