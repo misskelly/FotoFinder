@@ -12,7 +12,8 @@ const reader = new FileReader();
 window.addEventListener('load', pageLoad);
 searchInput.addEventListener('input', search);
 addFotoBtn.addEventListener('click', addNewFoto);
-gallery.addEventListener('click', identifyEventTarget);
+gallery.addEventListener('click', cardButton);
+gallery.addEventListener('input', editCard)
 // showMoreBtn.addEventListener('click', moreLess);
 
 
@@ -38,8 +39,7 @@ function search() {
 }
 
 function addNewFoto(e) {
-  e.preventDefault();
-  // console.log(fileInput.files[0])
+  e.preventDefault();  // console.log(fileInput.files[0])
   if (fileInput.files[0]) {
     reader.readAsDataURL(fileInput.files[0]);
     reader.onload = saveFoto;
@@ -81,24 +81,26 @@ function appendFoto(foto) {
       </article>`);
 }
 
-function identifyEventTarget(e) {
+function findFoto(e) {
+  const targetCardId = e.target.closest('.foto-card').dataset.id;
+  const targetFoto = fotoArr.find(foto => foto.id == targetCardId);
+  return targetFoto;
+}
+
+function cardButton(e) {
   e.preventDefault();
   const targetCard = e.target.closest('.foto-card');
-  const cardId = parseInt(targetCard.dataset.id);
-  const targetFoto = fotoArr.find(foto => foto.id === cardId);
+  const targetFoto = findFoto(e);
   const index = fotoArr.indexOf(targetFoto);
   if (e.target.matches('.trash-icon-active')) {
     targetCard.remove();
     targetFoto.deleteFromStorage(index);
-  } else if (e.target.matches('.card-text')) {
-    editCardText(e, targetFoto)
-    // targetFoto.updateContent(e);
-  }
+  } 
 }
 
-function editCardText(e, foto) {
-    e.target.addEventListener('input', () => {
-      foto.updateContent(e, e.target.innerText);
-    });
+function editCard(e) {
+  const targetFoto = findFoto(e);
+  console.log(targetFoto)
+  targetFoto.updateContent(e, e.target.innerText);
 }
 
