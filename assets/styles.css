@@ -16,11 +16,11 @@ html {
 }
 
 body {
-  display: flex;
+/*  display: flex;
   flex-direction: column;
   min-height: 100%;
   width: 100%;
-  background-color: #f6f9fc;
+  background-color: #f6f9fc;*/
   color: #FFFFFF;
 
 }
@@ -182,14 +182,16 @@ main {
 h5 {
   color: #5B4447;
 }
-
-.gallery {
+.cards-section {
   background-color: #C1B2B4;
+  display: flex;
+  justify-content: center;
+}
+.gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding: 40px;
-  width: 100%;
+  width: 95%;
   min-height: 50vh;
 }
 
@@ -197,14 +199,14 @@ h5 {
   background-color: #FFFFFF;
   color: black;
   border: 2px solid black;
-  height: 350px;
   margin: 2%;
+  /*height: 350px;*/
   min-width: 200px;
   width: 20%;
 }
 
 .foto-img {
-  max-height: 180px;
+  max-height: 160px;
   object-fit: cover; 
   width: 100%;
 }
@@ -213,6 +215,10 @@ h5 {
 .card-caption {
   margin-left: 1rem;
   outline: none;
+}
+
+.card-caption {
+  height: 40px;
 }
 
 .card-buttons {
@@ -262,5 +268,48 @@ h5 {
 .footer {
   display: none;
 }
+
+@media only screen 
+  and (min-width: 717px) and (max-width: 1005px) {
+
+    .foto-card {
+      width: 25%;
+      margin: 2%;
+    }
+
+    .gallery {
+      width: 100%;
+      justify-content: space-around;
+    }
+  }
+
+  @media only screen 
+  and (max-width: 716px) {
+    header {
+      display: block;
+      text-align: center;
+      padding: 10px;
+    }
+
+    h1,
+    .search {
+      margin: 10px auto;
+    }
+
+    .search {
+      width: 70%;
+    }
+    .input-container,
+    .btn-container {
+      width: 80%;
+    }
+
+    .foto-card {
+      width: 40%;
+      margin: 2%;
+    }
+    
+  }
+
 
 
