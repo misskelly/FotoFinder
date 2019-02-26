@@ -1,4 +1,5 @@
 const searchInput = document.querySelector('.search-input');
+const newFotoForm = document.querySelector('.new-foto-info');
 const titleInput = document.querySelector('.title-input');
 const captionInput = document.querySelector('.cap-input');
 const fileInput = document.querySelector('.add-file');
@@ -18,7 +19,9 @@ searchInput.addEventListener('input', search);
 addFotoBtn.addEventListener('click', addNewFoto);
 viewFavsBtn.addEventListener('click', viewFavs)
 gallery.addEventListener('click', cardButton);
-gallery.addEventListener('input', editCard)
+gallery.addEventListener('input', editCard);
+newFotoForm.addEventListener('change', enableButton)
+
 // showMoreBtn.addEventListener('click', moreLess);
 
 function pageLoad() {
@@ -41,6 +44,15 @@ function search() {
   filteredCards.forEach(foto => appendFoto(foto));
 }
 
+function enableButton() {
+    addFotoBtn.disabled = !inputValuesPresent();
+}
+
+function inputValuesPresent() {
+  return fileInput.files.length > 0 &&
+  titleInput.value.length > 0 &&
+  captionInput.value.length > 0;
+}
 
 function addNewFoto(e) {
   e.preventDefault();
@@ -48,6 +60,7 @@ function addNewFoto(e) {
     reader.readAsDataURL(fileInput.files[0]);
     reader.onload = saveFoto;
   }
+  enableButton();
 }
 
 function saveFoto(e) {
