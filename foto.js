@@ -28,12 +28,4 @@ class Foto {
     this.saveToStorage(fotoArr);
   }
 
-  // updateFav() {
-  //   this.fav = !this.fav;
-  //   console.log(this)
-  //   console.log(fotoArr)
-  //   // this.saveToStorage(fotoArr); 
-  // }
-
-
 }
