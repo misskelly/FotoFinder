@@ -210,6 +210,10 @@ h5 {
 .card-caption {
   margin-left: 1rem;
   outline: none;
+  overflow-x: scroll;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .card-caption {
