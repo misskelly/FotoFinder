@@ -133,6 +133,7 @@ h1 {
 .add-btn {
   width: 45%;
 }
+
 .btn-container-div {
   display: flex;
   justify-content: space-between;
@@ -294,16 +295,20 @@ h5 {
       text-align: center;
       padding: 10px;
     }
+
     h1 {
       font-size: 30px;
     }
+
     h1,
     .search {
       margin: 20px auto;
     }
+
     .logo {
       height: 30px;
     }
+    
     .search {
       width: 90%;
     }

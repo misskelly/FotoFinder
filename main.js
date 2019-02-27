@@ -9,11 +9,8 @@ const showMoreBtn = document.querySelector('.show-more');
 const gallery = document.querySelector('.gallery');
 const emptyGallery = document.querySelector('.empty-gallery');
 const footer = document.querySelector('footer');
-let fav;
-let unfav;
 const fotoArr = [];
 const reader = new FileReader();
-
 
 window.addEventListener('load', pageLoad);
 searchInput.addEventListener('input', search);
@@ -35,7 +32,7 @@ function search() {
 }
 
 function filterFavorites() {
-  return fotoArr.filter(foto => foto.fav === true)
+  return fotoArr.filter(foto => foto.fav === true);
 }
 
 function addNewFoto(e) {
@@ -49,14 +46,17 @@ function addNewFoto(e) {
   }
   enableButton();
 }
+
 function enableButton() {
   addFotoBtn.disabled = !inputValuesPresent();
 }
+
 function inputValuesPresent() {
   return fileInput.files.length > 0 &&
   titleInput.value.length > 0 &&
   captionInput.value.length > 0;
 }
+
 function saveFoto(e) {
   e.preventDefault;
   let newFoto = new Foto(Date.now(), titleInput.value, captionInput.value, e.target.result);
@@ -67,7 +67,6 @@ function saveFoto(e) {
   captionInput.value = '';
   fileInput.files.length === 0;
 }
-
 
 function pageLoad() {
   if (localStorage.hasOwnProperty("storedFotos")) {
@@ -97,7 +96,6 @@ function appendTheseFotos(fotos) {
   fotos.forEach(foto => checkFav(foto))
 }
 
-
 function checkFav(foto) {
   const favCount = document.querySelector('#fav-count');
   if (foto.fav === true) {
@@ -108,11 +106,9 @@ function checkFav(foto) {
   }
 }
 
-
 function moreLess() {
   gallery.innerHTML = '';
   if (showMoreBtn.innerText === 'Show More') {
-    // favorites = [];
     appendTheseFotos(fotoArr);
     showMoreBtn.innerText = 'Show Less';
   } else if (showMoreBtn.innerText === 'Show Less') {
@@ -121,11 +117,10 @@ function moreLess() {
   }
 }
 
-
 function appendFoto(foto, fav, unfav) {
   gallery.insertAdjacentHTML('afterbegin',
     `<article data-id=${foto.id} class="foto-card">
-        <h4 class="card-title card-text" contenteditable="true" onkeydown="enterKey()">
+        <h4 class="card-title card-text" contenteditable="true">
           ${foto.title}
         </h4>
         <div class="card-img-container">
@@ -194,7 +189,6 @@ function favToggle(e, card, foto) {
 
 function editCard(e) {
   const targetFoto = findFoto(e);
-  // console.log(targetFoto)
   targetFoto.updateFoto(e, e.target.innerText);
 }
 
