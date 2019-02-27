@@ -70,6 +70,8 @@ function saveFoto(e) {
 
 
 function pageLoad() {
+  debugger
+
   if (localStorage.hasOwnProperty("storedFotos")) {
     const parsedArray = JSON.parse(localStorage.getItem("storedFotos"));
     parsedArray.forEach(foto => {
@@ -88,7 +90,9 @@ function showTen() {
     const topTen = fotoArr.slice(-10);
     appendTheseFotos(topTen);
     footer.classList.add('visible-footer');
-  } 
+  } else {
+    appendTheseFotos(fotoArr);
+  }
 }
 
 function appendTheseFotos(fotos) {
