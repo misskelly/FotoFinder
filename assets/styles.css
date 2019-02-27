@@ -124,6 +124,7 @@ h1 {
   background-color: #864035;
 }
 .new-foto-input {
+  text-align: center;
   width: 100%;
   padding: 10px;
 }
@@ -211,10 +212,10 @@ h5 {
 .card-caption {
   margin-left: 1rem;
   outline: none;
-  overflow-x: scroll;
-  word-wrap: break-word;
   overflow-wrap: break-word;
+  overflow-x: scroll;
   white-space: normal;
+  word-wrap: break-word;
 }
 
 .card-caption {
