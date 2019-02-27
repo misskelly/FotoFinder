@@ -70,8 +70,6 @@ function saveFoto(e) {
 
 
 function pageLoad() {
-  debugger
-
   if (localStorage.hasOwnProperty("storedFotos")) {
     const parsedArray = JSON.parse(localStorage.getItem("storedFotos"));
     parsedArray.forEach(foto => {
@@ -152,11 +150,15 @@ function appendFoto(foto, fav, unfav) {
 function viewFavs(e) {
   e.preventDefault();
   let favorites = filterFavorites();
-  console.log(favorites);
   gallery.innerHTML = '';
-  favorites.forEach(foto => {
+  if (viewFavsBtn.innerText.includes('favorites')) {
+    favorites.forEach(foto => {
     appendFoto(foto, 'favorite', 'unfav');
     });
+    viewFavsBtn.innerText = `Show All ${fotoArr.length}`
+  } else {
+    appendTheseFotos(fotoArr);
+  }
 }
 
 function enterKey(e) {
